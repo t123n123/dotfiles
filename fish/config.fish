@@ -4,6 +4,7 @@ if status is-interactive
 end
 fish_add_path --path /home/mihai/.cargo/bin
 fish_add_path --path /home/mihai/.local/bin
+fish_add_path --path /home/mihai/repos/Isabelle2024/bin
 
 set -Ux EDITOR nvim
 # Initialize Ocaml env
