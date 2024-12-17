@@ -91,8 +91,10 @@ return {
 			local ensure_installed = vim.tbl_keys({})
 			vim.list_extend(ensure_installed, {
 				"stylua",
-				"haskell-language-server",
 				"kotlin-language-server",
+				"pyright",
+				"grammarly",
+				"clangd",
 			})
 
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
@@ -107,12 +109,15 @@ return {
 				},
 			})
 
-			require("lspconfig")["clangd"].setup({})
-			require("lspconfig")["pyright"].setup({})
-			require("lspconfig")["rust_analyzer"].setup({})
-			require("lspconfig")["ocamllsp"].setup({})
-			require("lspconfig")["racket_langserver"].setup({})
-			require("lspconfig")["kotlin_language_server"].setup({
+			local lsp = require("lspconfig")
+
+			lsp["clangd"].setup({})
+			lsp["pyright"].setup({})
+			lsp["rust_analyzer"].setup({})
+			lsp["ocamllsp"].setup({})
+			lsp["grammarly"].setup({})
+			lsp["racket_langserver"].setup({})
+			lsp["kotlin_language_server"].setup({
 				cmd = { "kotlin-language-server" },
 				filetypes = { "kotlin", "kt" },
 			})
