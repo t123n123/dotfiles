@@ -5,3 +5,16 @@ sort_by = "natural"
 [preview]
 wrap = "yes"
 tab_size = 2
+
+[opener]
+edit = [
+    { run = 'vim "$@', for = "unix"}, 
+    { run = 'vim %*', for "windows"}
+]
+
+[open]
+rules = [
+    { mime = "text/*", use = "edit" },
+    { mime = "vidoe/*", use = "play" }
+]
+
