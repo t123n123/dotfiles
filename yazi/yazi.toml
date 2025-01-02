@@ -1,0 +1,7 @@
+[manager]
+show_hidden = true
+sort_by = "natural"
+
+[preview]
+wrap = "yes"
+tab_size = 2

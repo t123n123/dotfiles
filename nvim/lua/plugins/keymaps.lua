@@ -9,5 +9,13 @@ return {
 			end,
 			desc = "Buffer Local Keymaps (which-key)",
 		},
+
+		{
+			"<leader>T",
+			function()
+				vim.cmd([[e ~/todo.md]])
+			end,
+			desc = "Open TODO file",
+		},
 	},
 }

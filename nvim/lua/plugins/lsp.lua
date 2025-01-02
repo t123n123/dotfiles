@@ -1,5 +1,5 @@
 return {
-
+	{ "whonore/Coqtail" },
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -90,11 +90,10 @@ return {
 
 			local ensure_installed = vim.tbl_keys({})
 			vim.list_extend(ensure_installed, {
-				"stylua",
 				"kotlin-language-server",
 				"pyright",
-				"grammarly",
 				"clangd",
+				"lua_ls",
 			})
 
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
@@ -111,12 +110,17 @@ return {
 
 			local lsp = require("lspconfig")
 
+			lsp["zls"].setup({})
+			lsp["lua_ls"].setup({})
+			lsp["harper_ls"].setup({})
 			lsp["clangd"].setup({})
 			lsp["pyright"].setup({})
 			lsp["rust_analyzer"].setup({})
 			lsp["ocamllsp"].setup({})
-			lsp["grammarly"].setup({})
 			lsp["racket_langserver"].setup({})
+			lsp["coq_lsp"].setup({
+				filetypes = { "v" },
+			})
 			lsp["kotlin_language_server"].setup({
 				cmd = { "kotlin-language-server" },
 				filetypes = { "kotlin", "kt" },
