@@ -18,3 +18,12 @@ rules = [
     { mime = "vidoe/*", use = "play" }
 ]
 
+[plugin]
+preloaders = [
+   # PDF
+   { mime = "application/pdf", run = "pdf" },
+]
+previewers = [
+   # PDF
+   { mime = "application/pdf", run = "pdf" },
+]
