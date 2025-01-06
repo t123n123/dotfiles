@@ -9,7 +9,7 @@ tab_size = 2
 [opener]
 edit = [
     { run = 'vim "$@', for = "unix"}, 
-    { run = 'vim %*', for "windows"}
+    { run = 'vim %*', for = "windows"}
 ]
 
 [open]
