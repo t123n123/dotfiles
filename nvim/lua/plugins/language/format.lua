@@ -1,6 +1,7 @@
 return {
-	{ "rhysd/vim-clang-format" },
-	{
+	"NMAC427/guess-indent.nvim",
+
+	{ -- Autoformat
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
 		cmd = { "ConformInfo" },
@@ -17,21 +18,20 @@ return {
 		opts = {
 			notify_on_error = false,
 			format_on_save = function(bufnr)
-				local disable_filetypes = { cpp = true, java = true }
-				local lsp_format_opt
+				local disable_filetypes = { c = true, cpp = true, java = true }
 				if disable_filetypes[vim.bo[bufnr].filetype] then
-					lsp_format_opt = "never"
+					return nil
 				else
-					lsp_format_opt = "fallback"
+					return {
+						timeout_ms = 500,
+						lsp_format = "fallback",
+					}
 				end
-				return {
-					timeout_ms = 500,
-					lsp_format = lsp_format_opt,
-				}
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "black" },
+				c = { "clang-format" },
 			},
 		},
 	},
