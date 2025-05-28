@@ -1,28 +1,4 @@
 return {
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		version = "*",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-		},
-		cmd = "Neotree",
-		keys = {
-			{ "\\", ":Neotree reveal<CR>", desc = "Show working directory", silent = true },
-		},
-		opts = {
-			filesystem = {
-				hijack_netrw_behavior = "open_default",
-				window = {
-					mappings = {
-						["\\"] = "close_window",
-					},
-				},
-			},
-		},
-	},
-
 	{ -- Fuzzy Finder (files, lsp, etc)
 		"nvim-telescope/telescope.nvim",
 		event = "VimEnter",
