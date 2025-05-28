@@ -1,3 +1,6 @@
 [flavor]
 dark = "kanagawa"
+<<<<<<< HEAD
 light = "kanagawa"
+=======
+>>>>>>> 3ddde54 (wsl stuff)
