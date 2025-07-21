@@ -14,6 +14,15 @@ local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
 require("lazy").setup({
+    { 
+        "EdenEast/nightfox.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function() 
+            vim.cmd [[colorscheme carbonfox]]
+        end,
+    },
+
     { "nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate" },
 
     { 
@@ -68,11 +77,56 @@ require("lazy").setup({
         config = function() 
             require("mini.keymap").setup()
             require("mini.surround").setup()
-            require("mini.clue").setup()
+            require("mini.pairs").setup()
+            local miniclue = require('mini.clue')
+            miniclue.setup({
+                triggers = {
+                    -- Leader triggers
+                    { mode = 'n', keys = '<Leader>' },
+                    { mode = 'x', keys = '<Leader>' },
+
+                    -- Built-in completion
+                    { mode = 'i', keys = '<C-x>' },
+
+                    -- `g` key
+                    { mode = 'n', keys = 'g' },
+                    { mode = 'x', keys = 'g' },
+
+                    -- Marks
+                    { mode = 'n', keys = "'" },
+                    { mode = 'n', keys = '`' },
+                    { mode = 'x', keys = "'" },
+                    { mode = 'x', keys = '`' },
+
+                    -- Registers
+                    { mode = 'n', keys = '"' },
+                    { mode = 'x', keys = '"' },
+                    { mode = 'i', keys = '<C-r>' },
+                    { mode = 'c', keys = '<C-r>' },
+
+                    -- Window commands
+                    { mode = 'n', keys = '<C-w>' },
+
+                    -- `z` key
+                    { mode = 'n', keys = 'z' },
+                    { mode = 'x', keys = 'z' },
+                },
+
+                clues = {
+                    miniclue.gen_clues.builtin_completion(),
+                    miniclue.gen_clues.g(),
+                    miniclue.gen_clues.marks(),
+                    miniclue.gen_clues.registers(),
+                    miniclue.gen_clues.windows(),
+                    miniclue.gen_clues.z(),
+                },
+            })
             require("mini.statusline").setup()
-            require("mini.starter").setup()
+            -- require("mini.files").setup()
+            require("mini.starter").setup({
+                header = "hello"
+            })
         end,
-    
     },
 
 })
